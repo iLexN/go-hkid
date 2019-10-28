@@ -21,6 +21,6 @@ func (h *result) Format() string {
 	return h.hkid.Format()
 }
 
-func NewHkidResultWithValid(hkid *hkid, valid bool) *result {
+func newHkidResultWithValid(hkid *hkid, valid bool) *result {
 	return &result{hkid: hkid, Valid: valid}
 }

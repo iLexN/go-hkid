@@ -37,6 +37,15 @@ func TestCheckStringTrue(t *testing.T) {
 			if hkidResult.Format() != v.output {
 				t.Errorf("%s should Equals", v.output)
 			}
+			if hkidResult.GetPart1() != clearString(v.part1) {
+				t.Errorf("%s should Equals", v.part1)
+			}
+			if hkidResult.GetPart2() != clearString(v.part2) {
+				t.Errorf("%s should Equals", v.part2)
+			}
+			if hkidResult.GetPart3() != clearString(v.part3) {
+				t.Errorf("%s should Equals", v.part3)
+			}
 		})
 	}
 }
