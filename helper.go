@@ -1,4 +1,4 @@
-package go_hkid
+package hkid
 
 import (
 	"regexp"
@@ -12,7 +12,7 @@ func clearString(s string) string {
 	return newString
 }
 
-func getRemainder(hkid *Hkid) string {
+func getRemainder(hkid *hkid) string {
 	charSum := getCharSum(hkid.part1)
 	hkidSum := calPart2Remainder(hkid.part2, charSum)
 
@@ -74,11 +74,11 @@ func getCharMap() map[string]int {
 	return idCharMap
 }
 
-func validatePatten(string string) (*Hkid, error) {
+func validatePatten(string string) (*hkid, error) {
 	r, _ := regexp.Compile("^(?P<p1>\\D{1,2})(?P<p2>\\d{6})\\((?P<p3>[\\w{1}0-9aA])\\)$")
 	match := r.FindStringSubmatch(string)
 	if len(match) == 0 {
-		return NewHkidNil(), NewPatterNotMatchError()
+		return newHkidNil(), newPatterNotMatchError()
 	}
-	return NewHkid(match[1], match[2], match[3]), nil
+	return newHkid(match[1], match[2], match[3]), nil
 }

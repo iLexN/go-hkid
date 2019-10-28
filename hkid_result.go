@@ -1,26 +1,26 @@
-package go_hkid
+package hkid
 
-type HkidResult struct {
-	hkid  *Hkid
+type result struct {
+	hkid  *hkid
 	Valid bool
 }
 
-func (h *HkidResult) GetPart1() string {
+func (h *result) GetPart1() string {
 	return h.hkid.GetPart1()
 }
 
-func (h *HkidResult) GetPart2() string {
+func (h *result) GetPart2() string {
 	return h.hkid.GetPart2()
 }
 
-func (h *HkidResult) GetPart3() string {
+func (h *result) GetPart3() string {
 	return h.hkid.GetPart3()
 }
 
-func (h *HkidResult) Format() string {
+func (h *result) Format() string {
 	return h.hkid.Format()
 }
 
-func NewHkidResultWithValid(hkid *Hkid, valid bool) *HkidResult {
-	return &HkidResult{hkid: hkid, Valid: valid}
+func NewHkidResultWithValid(hkid *hkid, valid bool) *result {
+	return &result{hkid: hkid, Valid: valid}
 }

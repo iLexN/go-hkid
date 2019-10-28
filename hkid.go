@@ -1,9 +1,9 @@
-package go_hkid
+package hkid
 
-func CheckString(string string) *HkidResult {
+func CheckString(string string) *result {
 	hkid, e := validatePatten(string)
 	if e != nil {
-		return NewHkidResultWithValid(NewHkidNil(), false)
+		return NewHkidResultWithValid(newHkidNil(), false)
 	}
 
 	if getRemainder(hkid) == hkid.part3 {
@@ -13,7 +13,7 @@ func CheckString(string string) *HkidResult {
 	return NewHkidResultWithValid(hkid, false)
 }
 
-func CheckPart(part1 string, part2 string, part3 string) *HkidResult {
-	hkid := NewHkid(part1, part2, part3)
+func CheckPart(part1 string, part2 string, part3 string) *result {
+	hkid := newHkid(part1, part2, part3)
 	return CheckString(hkid.Format())
 }

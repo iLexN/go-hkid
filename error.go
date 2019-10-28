@@ -1,9 +1,9 @@
-package go_hkid
+package hkid
 
 type patterNotMatchError struct {
 }
 
-func NewPatterNotMatchError() *patterNotMatchError {
+func newPatterNotMatchError() *patterNotMatchError {
 	return &patterNotMatchError{}
 }
 
