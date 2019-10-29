@@ -2,6 +2,7 @@ package hkid
 
 func CheckString(string string) *result {
 	hkid, e := validatePatten(string)
+	//if errors.Is(e, newPatterNotMatchError()) {
 	if e != nil {
 		return newHkidResultWithValid(newHkidNil(), false)
 	}
