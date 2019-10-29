@@ -10,6 +10,17 @@ type correctData struct {
 	output string
 }
 
+type wrongFormatData struct {
+	input string
+	part1 string
+	part2 string
+	part3 string
+}
+
+func newWrongFormatData(input string, part1 string, part2 string, part3 string) wrongFormatData {
+	return wrongFormatData{input: input, part1: part1, part2: part2, part3: part3}
+}
+
 func newCorrectData(input string, part1 string, part2 string, part3 string, output string) correctData {
 	return correctData{input: input, part1: part1, part2: part2, part3: part3, output: output}
 }
@@ -23,6 +34,41 @@ func getCorrectData() [7]correctData {
 		newCorrectData("B111117(0)", "B", "111117", "0", "B111117(0)"),
 		newCorrectData(" B111117(0)", " B", "111117", "0", "B111117(0)"),
 		newCorrectData("z109852(8)", "z", "109852", "8", "Z109852(8)"),
+	}
+}
+
+func getWrongFormatData() [6]wrongFormatData {
+	return [6]wrongFormatData{
+		newWrongFormatData("B111111(3)", "B", "111111", "3"),
+		newWrongFormatData("CAC182361(1)", "CaC", "182361", "1"),
+		newWrongFormatData("111112(A)", "", "111112", "A"),
+		newWrongFormatData("1B111117(0)", "1B", "111117", "0"),
+		newWrongFormatData("122(0)", "1", "22", "0"),
+		newWrongFormatData("111111", "1", "111", "1"),
+	}
+}
+
+func TestCheckStringFalse(t *testing.T) {
+	data := getWrongFormatData()
+	for _, v := range data {
+		t.Run(v.input, func(t *testing.T) {
+			hkidResult := CheckString(v.input)
+			if hkidResult.Valid == true {
+				t.Errorf("%s should false", v.input)
+			}
+		})
+	}
+}
+
+func TestCheckPartFalse(t *testing.T) {
+	data := getWrongFormatData()
+	for _, v := range data {
+		t.Run(v.input, func(t *testing.T) {
+			hkidResult := CheckPart(v.part1, v.part2, v.part3)
+			if hkidResult.Valid == true {
+				t.Errorf("%s should false", v.input)
+			}
+		})
 	}
 }
 
