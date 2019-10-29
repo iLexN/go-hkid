@@ -1,3 +1,4 @@
+//package hkid to check HKID Card No.
 package hkid
 
 // CheckString : Check HKID Format eg. CA182361(1).
