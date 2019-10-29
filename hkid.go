@@ -1,10 +1,9 @@
 package hkid
 
-import "errors"
-
 func CheckString(string string) *result {
 	hkid, e := validatePatten(string)
-	if errors.Is(e, newPatterNotMatchError()) {
+	//if errors.Is(e, newPatterNotMatchError()) {
+	if e != nil {
 		return newHkidResultWithValid(newHkidNil(), false)
 	}
 
