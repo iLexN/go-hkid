@@ -75,7 +75,7 @@ func getCharMap() map[string]int {
 }
 
 func validatePatten(string string) (*hkid, error) {
-	r, _ := regexp.Compile("^(?P<p1>\\D{1,2})(?P<p2>\\d{6})\\((?P<p3>[\\w{1}0-9aA])\\)$")
+	r, _ := regexp.Compile(`^(?P<p1>\D{1,2})(?P<p2>\d{6})\((?P<p3>[\w{1}0-9aA])\)$`)
 	match := r.FindStringSubmatch(string)
 	if len(match) == 0 {
 		return newHkidNil(), newPatterNotMatchError()
