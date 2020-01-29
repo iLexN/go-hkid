@@ -1,6 +1,8 @@
 package hkid
 
-import "testing"
+import (
+	"testing"
+)
 
 type correctData struct {
 	input  string
@@ -108,5 +110,17 @@ func TestCheckPartTrue(t *testing.T) {
 				t.Errorf("%s should Equals", v.output)
 			}
 		})
+	}
+}
+
+func BenchmarkCheckPart(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		CheckPart("B", "111111", "1")
+	}
+}
+
+func BenchmarkCheckString(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		CheckString("B111111(1)")
 	}
 }
